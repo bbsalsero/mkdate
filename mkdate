@@ -1,3 +1,35 @@
-#!/bin/sh
-S="./"
-mkdir $1$S$(date +"%b-%d-%y")
+#!/bin/bash
+mkargv=" "
+
+if [[ $@ == *"-h"* ]]
+then
+echo "
+ -h, --help montre cette aide.
+ -p, --parents     pas d'erreur si existant, crée les répertoires parents si nécessaire
+ -v, --verbose     affiche un message pour chaque répertoire créé
+ "
+ exit 1
+fi
+
+
+
+  for arg in $@; do
+
+  case $arg in
+
+-p|--parents)
+	mkargv=$mkargv$arg" "
+;;
+-v|--verbose)
+	mkargv=$mkargv$arg" "
+;;
+
+esac
+done
+
+echo $mkargv
+echo "${@: -1}"
+
+
+S="/./"
+ mkdir $mkargv "${@: -1}"$S$(date +"%b-%d-%y")mkdir $1$S$(date +"%b-%d-%y")
