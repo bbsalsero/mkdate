@@ -31,5 +31,7 @@ echo $mkargv
 echo "${@: -1}"
 
 
-S="/./"
- mkdir $mkargv "${@: -1}"$S$(date +"%b-%d-%y")mkdir $1$S$(date +"%b-%d-%y")
+ 
+ mkdir $mkargv "${@: -1}"$(date +"%b-%d-%y")
+
+ #mkdir $1$S$(date +"%b-%d-%y")
